@@ -146,9 +146,13 @@
     position: relative;
     width: 192px;
     height: 192px;
-    margin-bottom: 2rem;
-    animation: float 4s ease-in-out infinite;
+    margin: -16px auto -8px;
+    animation: owlyMascotFloat 4s ease-in-out infinite;
     filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+  }
+  @keyframes owlyMascotFloat {
+    0%, 100% { transform: scale(0.7) translateY(0) rotate(-2deg); }
+    50% { transform: scale(0.7) translateY(-15px) rotate(2deg); }
   }
   .owl-body {
     position: absolute;
@@ -2078,8 +2082,8 @@
     <span class="pure-sense">PURE SENSE</span>
   </div>
   <div class="lang-toggle">
-    <button class="lang-btn active" data-lang="ko" type="button" onclick="setLanguage('ko')">한국어</button>
-    <button class="lang-btn" data-lang="en" type="button" onclick="setLanguage('en')">English</button>
+    <button class="lang-btn" data-lang="ko" type="button" onclick="setLanguage('ko')">한국어</button>
+    <button class="lang-btn active" data-lang="en" type="button" onclick="setLanguage('en')">English</button>
   </div>
 </nav>
 
@@ -2123,14 +2127,14 @@
   <p class="subtitle" data-i18n="hero_subtitle">"수호 부엉이가 보내주는 마법 거울.<br>이제 마음 편히 쉬세요."</p>
 
   <div class="hero-buttons">
-    <a href="#" class="btn-primary">
+    <a href="https://play.google.com/store/apps/details?id=com.owlyview.app" target="_blank" rel="noopener" class="btn-primary">
       <span style="font-size:1.3rem;">▶</span>
       <span data-i18n="cta_play">Google Play에서 받기</span>
     </a>
-    <a href="#" class="btn-secondary">
+    <span class="btn-secondary" style="cursor: default; opacity: 0.85; pointer-events: none;">
       <span style="font-size:1.3rem;">🍎</span>
-      <span data-i18n="cta_ios">iOS 출시 알림 받기</span>
-    </a>
+      <span data-i18n="cta_ios">iOS 5월 중 출시 예정</span>
+    </span>
   </div>
 
   <p class="hero-tagline" data-i18n="hero_tagline">✨ 완전 무료 · 176개국 지원 · 회원가입 없이 시작</p>
@@ -2144,7 +2148,7 @@
 
     <div class="value-grid">
       <div class="value-card fade-in">
-        <div class="value-icon">🧠</div>
+        <div class="value-icon">🪄</div>
         <h3 data-i18n="v1_title">AI 스마트 감지</h3>
         <p data-i18n="v1_desc">온디바이스 AI가 울음, 비명, 얼굴 움직임을 실시간으로 감지해요. 모든 분석은 폰 안에서만, 외부 서버는 거치지 않아요.</p>
       </div>
@@ -2226,7 +2230,7 @@
           <span class="safe-block" data-i18n="safe2_block">차단: 코드 추측 공격 · 외부인 무단 접속</span>
         </div>
         <div class="safe-item">
-          <span class="safe-icon">🧠</span>
+          <span class="safe-icon">📱</span>
           <span class="safe-tag">ON-DEVICE AI</span>
           <strong data-i18n="safe3_t">영상은 폰 밖을 한 발짝도 나가지 않아요</strong>
           <span class="safe-desc" data-i18n="safe3_d">얼굴·울음 분석은 모두 폰 안에서. 어떤 클라우드 저장소에도 영상이 남지 않아요.</span>
@@ -2619,11 +2623,11 @@
     <h2 data-i18n="final_title">오늘 밤,<br>수호 부엉이를 깨워보세요</h2>
     <p data-i18n="final_desc">"이제야 좀 눕네요... 육아 퇴근!" 🛏️</p>
     <div class="hero-buttons" style="justify-content:center;">
-      <a href="#" class="btn-primary">
+      <a href="https://play.google.com/store/apps/details?id=com.owlyview.app" target="_blank" rel="noopener" class="btn-primary">
         <span style="font-size:1.3rem;">▶</span>
         <span data-i18n="cta_play2">Google Play에서 받기</span>
       </a>
-      <a href="#" class="btn-secondary">
+      <a href="https://owlyview.github.io/owly-manual/" target="_blank" rel="noopener" class="btn-secondary">
         <span style="font-size:1.3rem;">📖</span>
         <span data-i18n="cta_manual">사용 설명서 보기</span>
       </a>
@@ -2662,7 +2666,7 @@
       hero_title: "잠든 아기 곁에<br>수호 부엉이 한 마리",
       hero_subtitle: "\"수호 부엉이가 보내주는 마법 거울.<br>이제 마음 편히 쉬세요.\"",
       cta_play: "Google Play에서 받기",
-      cta_ios: "iOS 출시 알림 받기",
+      cta_ios: "iOS 5월 중 출시 예정",
       hero_tagline: "✨ 완전 무료 · 176개국 지원 · 회원가입 없이 시작",
       values_title: "왜 오울리뷰일까요?",
       values_subtitle: "밤새 깨어 지켜보는 부엉이처럼, 아기를 살피는 세 가지 약속",
@@ -2851,7 +2855,7 @@
       hero_title: "A guardian owl,<br>watching over your baby",
       hero_subtitle: "\"The guardian owl sends you a magic mirror.<br>Now rest easy.\"",
       cta_play: "Get it on Google Play",
-      cta_ios: "Notify me on iOS launch",
+      cta_ios: "iOS coming May 2026",
       hero_tagline: "✨ Completely free · 176 countries · No sign-up needed",
       values_title: "Why Owly View?",
       values_subtitle: "Like an owl that stays awake all night, three promises to watch over your baby",
