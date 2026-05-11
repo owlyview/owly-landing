@@ -3208,6 +3208,9 @@
 
   // Initial render
   renderBabyDonut();
+
+  // Force English on page load
+  setTimeout(function(){try{setLanguage('en');}catch(e){}}, 100);
 </script>
 
 </body>
