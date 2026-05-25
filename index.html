@@ -822,6 +822,31 @@
     color: rgba(254, 243, 215, 0.55);
     font-size: 0.92rem;
   }
+  .pdf-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 0.7rem 1.4rem;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.25) 0%, rgba(99, 102, 241, 0.15) 100%);
+    border: 1px solid rgba(139, 92, 246, 0.4);
+    border-radius: 12px;
+    color: var(--cream);
+    font-size: 0.9rem;
+    font-weight: 600;
+    pointer-events: none;
+  }
+  .pdf-cta-wrap {
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+  .pdf-cta-hint {
+    display: block;
+    margin-top: 0.6rem;
+    color: rgba(254, 243, 215, 0.45);
+    font-size: 0.82rem;
+    font-style: italic;
+  }
   @media (max-width: 700px) {
     .parenting-content { grid-template-columns: 1fr; gap: 1.5rem; }
     .donut-wrap { max-width: 240px; }
@@ -1732,10 +1757,27 @@
     padding: 1.8rem;
     border-radius: 16px;
     transition: all 0.3s;
+    position: relative;
   }
   .magic-card:hover {
     border-color: rgba(245, 185, 66, 0.3);
     transform: translateY(-4px);
+  }
+  .magic-card.new-card {
+    background: linear-gradient(145deg, rgba(245, 185, 66, 0.12) 0%, rgba(255, 169, 64, 0.04) 100%);
+    border-color: rgba(245, 185, 66, 0.3);
+  }
+  .new-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--amber) 100%);
+    color: var(--bg-deep);
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 8px;
+    letter-spacing: 0.05em;
+    vertical-align: middle;
   }
   .magic-icon {
     font-size: 2rem;
@@ -2298,9 +2340,18 @@
         <h5>📋 <span data-i18n="today_records">오늘 기록</span></h5>
         <div id="eventList"></div>
       </div>
+
+      <div class="pdf-cta-wrap">
+        <div class="pdf-cta">
+          <span style="font-size:1.1rem">📤</span>
+          <span data-i18n="pdf_cta">소아과용 PDF 만들기</span>
+          <span class="new-tag" data-i18n="new_tag">NEW</span>
+        </div>
+        <span class="pdf-cta-hint" data-i18n="pdf_cta_hint">진료 시 의사에게 보여줄 진료 보조 자료 (의료기기 아님)</span>
+      </div>
     </div>
 
-    <p class="other-features fade-in" data-i18n="other_features">💊 약 알림 · 🌟 성장 기록 · 🔮 운세 보기 — 5장의 마법 카드가 매일을 함께해요</p>
+    <p class="other-features fade-in" data-i18n="other_features">💩 기저귀 · ❤️ 건강 · 📤 소아과용 PDF — 4장의 마법 카드가 매일을 함께해요</p>
   </div>
 </section>
 
@@ -2311,6 +2362,11 @@
     <p class="section-subtitle fade-in" data-i18n="more_subtitle">잘 보이지 않는 곳에서 부엉이가 챙기는 것들</p>
 
     <div class="magic-grid">
+      <div class="magic-card new-card fade-in">
+        <div class="magic-icon">🎵</div>
+        <h4 data-i18n="m7_title">자장가 · 백색소음<span class="new-tag" data-i18n="new_tag">NEW</span></h4>
+        <p data-i18n="m7_desc">자장가 3곡과 백색소음 6종을 허브폰 스피커에서 재생해요. 뷰어폰은 리모컨처럼 볼륨과 타이머(30분/1시간/8시간/∞)를 조절.</p>
+      </div>
       <div class="magic-card fade-in">
         <div class="magic-icon">📖</div>
         <h4 data-i18n="m1_title">마법 일기장</h4>
@@ -2391,9 +2447,8 @@
 <footer>
   <div class="footer-links">
     <a href="https://owlyview.github.io/owly-manual/" data-i18n="f_manual">사용 설명서</a>
-    <a href="#" data-i18n="f_privacy">개인정보 처리방침</a>
-    <a href="#" data-i18n="f_terms">이용약관</a>
-    <a href="#" data-i18n="f_contact">문의하기</a>
+    <a href="https://owlyview.github.io/owly-privacy/" data-i18n="f_privacy">개인정보 처리방침</a>
+    <a href="https://owlyview.github.io/owly-privacy/support.html" data-i18n="f_contact">문의하기</a>
   </div>
   <div class="copyright">© 2026 Owly View · 오울리뷰 🦉 · PURE SENSE</div>
 </footer>
@@ -2472,14 +2527,10 @@
       g3_stage: "STAGE 3", g3_title: "스마트 오디오",
       g3_desc: "완전 어두움. 영상 추적은 멈추고 소리만 분석해 울음·뒤척임을 감지해요.",
       box_title: "🎁 육아 상자",
-      box_subtitle: "매일의 작은 순간들을 부엉이가 기억해드려요. 5장의 마법 카드.",
-      b1_title: "운세 보기", b1_desc: "오늘의 부엉이 한마디",
-      b2_title: "수유 기록", b2_desc: "모유 좌/우 · 분유 ml",
-      b3_title: "수면 기록", b3_desc: "도넛 그래프로 한눈에",
-      b4_title: "약 알림", b4_desc: "다음 복용 시간 미리보기",
-      b5_title: "성장 기록", b5_desc: "50개의 발달 발자국",
       more_title: "더 많은 마법",
       more_subtitle: "잘 보이지 않는 곳에서 부엉이가 챙기는 것들",
+      m7_title: "자장가 · 백색소음",
+      m7_desc: "자장가 3곡(브람스·슈베르트·파헨벨)과 백색소음 6종을 허브폰 스피커에서 재생해요. 뷰어폰은 리모컨처럼 볼륨과 타이머(30분/1시간/8시간/∞)를 조절.",
       m1_title: "마법 일기장",
       m1_desc: "지난 24시간의 감지 기록을 타임라인 차트로. 소음·온도·습도·얼굴 이벤트를 한눈에 확인해요.",
       m2_title: "숲속 톡 & 가족 채팅방",
@@ -2521,7 +2572,10 @@
       formula_btn: "분유",
       sleep_title: "수면 기록",
       today_records: "오늘 기록",
-      other_features: "💊 약 알림 · 🌟 성장 기록 · 🔮 운세 보기 — 5장의 마법 카드가 매일을 함께해요",
+      pdf_cta: "소아과용 PDF 만들기",
+      pdf_cta_hint: "진료 시 의사에게 보여줄 진료 보조 자료 (의료기기 아님)",
+      new_tag: "NEW",
+      other_features: "💩 기저귀 · ❤️ 건강 · 📤 소아과용 PDF — 4장의 마법 카드가 매일을 함께해요",
       sec_title: "🚨 베이비 모니터, 정말 안전할까요?",
       sec_subtitle: "최근 잇따라 보도된 가정용 카메라 해킹 사례들이에요.",
       news1_headline: "국내 IP 카메라 12만 대 해킹 사건 보도",
@@ -2604,7 +2658,10 @@
       formula_btn: "Formula",
       sleep_title: "Sleep Log",
       today_records: "Today's Log",
-      other_features: "💊 Medication · 🌟 Growth · 🔮 Fortune — 5 magic cards by your side every day",
+      pdf_cta: "Make Pediatric PDF",
+      pdf_cta_hint: "A doctor's-visit summary (reference only, not a medical device)",
+      new_tag: "NEW",
+      other_features: "💩 Diaper · ❤️ Health · 📤 Pediatric PDF — 4 magic cards plus a doctor's-visit summary",
       hero_title: "A guardian owl,<br>watching over your baby",
       hero_subtitle: "\"The guardian owl sends you a magic mirror.<br>Now rest easy.\"",
       cta_play: "Get it on Google Play",
@@ -2661,14 +2718,10 @@
       g3_stage: "STAGE 3", g3_title: "Smart Audio",
       g3_desc: "Total darkness. Video stops, only audio is analyzed for cries and stirring.",
       box_title: "🎁 Parenting Box",
-      box_subtitle: "Let the owl remember the little moments of every day. 5 magic cards.",
-      b1_title: "Fortune", b1_desc: "Today's word from the owl",
-      b2_title: "Feeding", b2_desc: "Breast L/R · formula ml",
-      b3_title: "Sleep", b3_desc: "Donut chart at a glance",
-      b4_title: "Medication", b4_desc: "Next dose preview",
-      b5_title: "Growth", b5_desc: "50 developmental footprints",
       more_title: "More magic",
       more_subtitle: "The little things the owl handles in the background",
+      m7_title: "Lullabies &amp; White Noise",
+      m7_desc: "Play 3 lullabies (Brahms, Schubert, Pachelbel) and 6 white-noise tracks through the hub phone's speaker. The viewer phone acts as a remote — volume and timer (30min/1hr/8hr/∞).",
       m1_title: "Magic Diary",
       m1_desc: "Last 24 hours of detection on a timeline chart. Noise, temperature, humidity, and face events at a glance.",
       m2_title: "Forest Talk & Family Chat",
@@ -2702,7 +2755,12 @@
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       if (translations[lang][key]) {
-        el.innerHTML = translations[lang][key];
+        // m7_title contains a child NEW tag — preserve it
+        if (key === 'm7_title') {
+          el.innerHTML = translations[lang][key] + '<span class="new-tag">' + translations[lang]['new_tag'] + '</span>';
+        } else {
+          el.innerHTML = translations[lang][key];
+        }
       }
     });
     document.querySelectorAll('.lang-btn').forEach(btn => {
